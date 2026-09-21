@@ -408,8 +408,11 @@
         backgroundMode: one-shot
         maxDepth: provider-managed
 
-    - id: workflow-worker-thread
-      name: '@deepseek-ai/dsh-workflow-worker-thread'
+    # The workflow ENGINE, mounted inside this realm: `workflows` is
+    # agent-local, so the engine belongs beside the `tool-workflow` consumer
+    # below rather than resolving the host's copy through the realm wall.
+    - id: workflow-ptc
+      name: '@deepseek-ai/dsh-workflow-ptc'
       config:
         provider: spawn
 
